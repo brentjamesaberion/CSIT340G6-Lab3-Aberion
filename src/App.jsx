@@ -9,9 +9,9 @@ const Header = (props) => {
 const Content = (props) => {
   return (
     <>
-      <Part name={props.part1.name} unit={props.part1.exercises} />
-      <Part name={props.part2.name} unit={props.part2.exercises} />
-      <Part name={props.part3.name} unit={props.part3.exercises} />
+      <Part name={props.parts[0].name} unit={props.parts[0].exercises} />
+      <Part name={props.parts[1].name} unit={props.parts[1].exercises} />
+      <Part name={props.parts[2].name} unit={props.parts[2].exercises} />
     </>
   )
 }
@@ -22,7 +22,13 @@ const Part = (props) => {
 
 const Total = (props) => {
   return (
-    <p>Total unit: {props.total}</p>
+    <p>
+      Total unit: {
+        props.parts[0].exercises +
+        props.parts[1].exercises +
+        props.parts[2].exercises
+      }
+    </p>
   )
 }
 
@@ -37,38 +43,30 @@ const Footer = (props) => {
 const App = () => {
   const course = 'Industry Elective 1'
 
-  const part1 = {
-    name: 'Information Management 2',
-    exercises: 3
-  }
-
-  const part2 = {
-    name: 'Data Analytics 1',
-    exercises: 3
-  }
-
-  const part3 = {
-    name: 'Technopreneurship',
-    exercises: 3
-  }
+  const parts = [
+    {
+      name: 'Information Management 2',
+      exercises: 3
+    },
+    {
+      name: 'Data Analytics 1',
+      exercises: 3
+    },
+    {
+      name: 'Technopreneurship',
+      exercises: 3
+    }
+  ]
 
   const name = 'Brent James Aberion'
   const courseCode = 'CSIT340'
   const section = 'G6'
 
-  const total = part1.exercises + part2.exercises + part3.exercises
-
   return (
     <>
       <Header course={course} />
-
-      <Content
-        part1={part1}
-        part2={part2}
-        part3={part3}
-      />
-
-      <Total total={total} />
+      <Content parts={parts} />
+      <Total parts={parts} />
 
       <Footer
         name={name}
