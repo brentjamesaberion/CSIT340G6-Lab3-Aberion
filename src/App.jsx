@@ -1,7 +1,7 @@
 const Header = (props) => {
   return (
     <h1>
-      {props.course}
+      {props.course.name}
     </h1>
   )
 }
@@ -41,22 +41,23 @@ const Footer = (props) => {
 }
 
 const App = () => {
-  const course = 'Industry Elective 1'
-
-  const parts = [
-    {
-      name: 'Information Management 2',
-      exercises: 3
-    },
-    {
-      name: 'Data Analytics 1',
-      exercises: 3
-    },
-    {
-      name: 'Technopreneurship',
-      exercises: 3
-    }
-  ]
+  const course = {
+    name: 'Industry Elective 1',
+    parts: [
+      {
+        name: 'Information Management 2',
+        exercises: 3
+      },
+      {
+        name: 'Data Analytics 1',
+        exercises: 3
+      },
+      {
+        name: 'Technopreneurship',
+        exercises: 3
+      }
+    ]
+  }
 
   const name = 'Brent James Aberion'
   const courseCode = 'CSIT340'
@@ -65,8 +66,8 @@ const App = () => {
   return (
     <>
       <Header course={course} />
-      <Content parts={parts} />
-      <Total parts={parts} />
+      <Content parts={course.parts} />
+      <Total parts={course.parts} />
 
       <Footer
         name={name}
